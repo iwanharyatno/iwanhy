@@ -17,12 +17,12 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <header className="fixed z-50 top-0 left-0 right-0 bg-[var(--color-void)]/85 backdrop-blur-md border-b border-[var(--color-border)] shadow-2xl shadow-black/50">
+    <header className="fixed z-50 top-0 left-0 right-0 bg-void/85 backdrop-blur-md border-b border-(--color-border) shadow-2xl shadow-black/50">
       
       {/* Inner container to maintain global layout alignment */}
       <nav className="container-portfolio flex items-center justify-between py-4">
         <div className="text-3xl font-bold">
-          IHY<span className="text-[var(--color-accent-cyan)]">.</span>
+          IHY<span className="text-accent-cyan">.</span>
         </div>
         
         {/* Navigation Links */}
@@ -37,7 +37,7 @@ export default function Navbar() {
                 className={`relative px-4 py-2 rounded-full transition-colors ${
                   isActive 
                     ? "text-white" 
-                    : "text-[var(--color-secondary)] hover:text-[var(--color-accent-cyan)]"
+                    : "text-secondary hover:text-accent-cyan"
                 }`}
               >
                 {/* The Sliding Glass Highlight */}
