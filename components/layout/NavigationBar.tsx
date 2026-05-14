@@ -57,10 +57,10 @@ export default function Navbar() {
 
         {/* Social Icons */}
         <div className="flex items-center space-x-5">
-          <a href="#" className="hover:text-white transition-colors"><GithubIcon className="w-5 h-5" /></a>
-          <a href="#" className="hover:text-white transition-colors"><LinkedinIcon className="w-5 h-5" /></a>
-          <a href="#" className="hover:text-white transition-colors"><XIcon className="w-5 h-5" /></a>
-          <a href="#" className="hover:text-white transition-colors"><FileText className="w-5 h-5" /></a>
+          <a href="https://github.com/iwanharyatno" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors"><GithubIcon className="w-5 h-5" /></a>
+          <a href="https://linkedin.com/in/iwanharyatno" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors"><LinkedinIcon className="w-5 h-5" /></a>
+          <a href="https://x.com/iwanharyatno" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors"><XIcon className="w-5 h-5" /></a>
+          {/* <a href="#" target="_blank" className="hover:text-white transition-colors"><FileText className="w-5 h-5" /></a> */}
         </div>
       </nav>
     </header>

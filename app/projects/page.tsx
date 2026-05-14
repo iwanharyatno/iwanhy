@@ -1,5 +1,4 @@
 import { projectSource } from '@/lib/source'
-import Image from 'next/image'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { FolderGit2, ArrowUpRight } from 'lucide-react'
@@ -52,12 +51,11 @@ export default function ProjectsPage() {
                 <Link href={project.url} className="relative aspect-video overflow-hidden block border-b border-(--color-border)">
                   {/* Inner void overlay removed on hover */}
                   <div className="absolute inset-0 bg-void/30 z-10 group-hover:bg-transparent transition-colors duration-500"></div>
-                  <Image
+                  <img
                     src={project.data.thumbnail}
                     alt={project.data.title}
-                    fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover grayscale-40 transition-all duration-700 ease-out group-hover:grayscale-0 group-hover:scale-105"
+                    className="object-cover w-full h-full grayscale-40 transition-all duration-700 ease-out group-hover:grayscale-0 group-hover:scale-105"
                   />
                 </Link>
 
