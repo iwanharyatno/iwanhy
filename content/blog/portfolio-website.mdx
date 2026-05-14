@@ -1,0 +1,37 @@
+---
+title: "Personal Portfolio"
+summary: "My personal site — a cyber-minimalist developer portfolio with a static MDX blog."
+techStack: ["Next.js", "Tailwind CSS v4", "fumadocs-mdx", "Cloudflare R2", "Vercel"]
+thumbnail: "https://r2.iwanhy.my.id/projects/portfolio-thumb.jpg"
+liveUrl: "https://iwanhy.my.id"
+repoUrl: "https://github.com/iwanhy/portfolio"
+featured: true
+order: 1
+tags: ["portfolio", "seo"]
+date: "2026-05-14"
+---
+
+## Overview
+
+This portfolio replaces my old React SPA with a fully static Next.js site.
+Every page — including this one — is pre-rendered at build time and served
+from Vercel's CDN.
+
+## The Challenge
+
+Keeping the maintenance cost at zero while still having a proper blog and
+project showcase with individual detail pages.
+
+## What I Built
+
+Content lives in `.mdx` files committed to Git. `fumadocs-mdx` compiles them
+at build time into typed collections. No CMS dashboard, no database, no
+monthly bill.
+
+Images are stored on Cloudflare R2, which has free egress — unlike S3.
+
+## Lessons Learned
+
+Tailwind v4's `@theme` directive makes design token management genuinely
+pleasant. Everything lives in one CSS file, and every token automatically
+becomes a utility class.

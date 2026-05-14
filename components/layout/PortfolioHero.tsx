@@ -8,70 +8,28 @@ import {
   GitBranch, 
   Command 
 } from 'lucide-react';
-import { TechBadge } from '../ui/TechBadge';
 import { FloatingKey } from '../ui/FloatingKey';
-
-const GithubIcon = ({ className }: { className?: string }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" className={className}>
-    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.2c3-.3 6-1.5 6-6.5a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 5 3 6.2 6 6.5a4.8 4.8 0 0 0-1 3.2v4"></path>
-  </svg>
-);
-
-const LinkedinIcon = ({ className }: { className?: string }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" className={className}>
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-    <rect x="2" y="9" width="4" height="12"></rect>
-    <circle cx="4" cy="4" r="2"></circle>
-  </svg>
-);
-
-const XIcon = ({ className }: { className?: string }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" className={className}>
-    <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
-    <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
-  </svg>
-);
+import { GithubIcon } from '../elements/CustomIcons';
+import Navbar from './NavigationBar';
 
 export default function PortfolioHero() {
   return (
-    <div className="relative min-h-screen overflow-hidden">
+    <div className="relative min-h-screen overflow-hidden pt-24 z-0">
       
       {/* Ambient Glows (from utilities layer) */}
       <div className="glow-cyan top-[-10%] left-[-10%] animate-pulse-glow"></div>
-      <div className="glow-blue bottom-[10%] right-[10%] animate-pulse-glow" style={{ animationDelay: '1.5s' }}></div>
-
-      {/* Navigation Bar */}
-      <nav className="container-portfolio relative z-10 flex items-center justify-between py-8">
-        <div className="text-3xl font-bold">
-          IHY<span className="text-accent-cyan">.</span>
-        </div>
-        
-        <div className="hidden md:flex items-center space-x-8 text-sm font-medium">
-          <a href="#home" className="glass px-4 py-2 rounded-full text-white!">Home</a>
-          <a href="#projects" className="hover:text-text-accent-cyan]">Projects</a>
-          <a href="#notes" className="hover:text-accent-cyan">Notes</a>
-          <a href="#about" className="hover:text-text-accent-cyan]">About</a>
-        </div>
-
-        <div className="flex items-center space-x-5">
-          <a href="#" className="hover:text-white"><GithubIcon className="w-5 h-5" /></a>
-          <a href="#" className="hover:text-white"><LinkedinIcon className="w-5 h-5" /></a>
-          <a href="#" className="hover:text-white"><XIcon className="w-5 h-5" /></a>
-          <a href="#" className="hover:text-white"><FileText className="w-5 h-5" /></a>
-        </div>
-      </nav>
 
       {/* Hero Section */}
-      <main className="container-portfolio relative z-10 pt-16 pb-24 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+      <main className="container-portfolio relative z-10 pt-4 pb-4 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center justify-between">
         
         {/* Left Column: Text Content */}
-        <div className="lg:col-span-7 flex flex-col items-start space-y-8 animate-fade-up">
+        <div className="lg:col-span-8 flex flex-col items-start space-y-8 animate-fade-up">
           <div className="space-y-2">
-            <h2 className="text-4xl sm:text-5xl font-normal">Hey there,</h2>
-            <h1 className="text-5xl sm:text-7xl">
+            <h2 className="md:text-3xl text-3xl font-normal">Hey there,</h2>
+            <h1 className="md:text-5xl text-4xl">
               I'm Iwan Haryatno
             </h1>
-            <h2 className="text-4xl sm:text-5xl text-gradient pt-2 pb-1">
+            <h2 className="md:text-3xl text-3xl text-gradient pt-2 pb-1">
               Web Developer
             </h2>
           </div>
@@ -93,11 +51,12 @@ export default function PortfolioHero() {
           </div>
         </div>
 
+        <div className="glow-blue bottom-0 right-0 animate-pulse-glow" style={{ animationDelay: '1.5s' }}></div>
         {/* Right Column: Visuals & Floating Elements */}
-        <div className="lg:col-span-5 relative w-full aspect-square md:aspect-4/5 rounded-3xl overflow-hidden hidden lg:block border border-(--color-border) shadow-2xl">
+        <div className="lg:col-span-4 relative w-full aspect-square md:aspect-4/5 rounded-3xl overflow-hidden hidden lg:block border border-(--color-border) shadow-2xl">
           {/* Main Portrait Placeholder */}
           <img 
-            src="/api/placeholder/600/800" 
+            src="/images/iwan.jpeg" 
             alt="Iwan Haryatno" 
             className="object-cover w-full h-full opacity-90 grayscale-20 hover:grayscale-0 transition-all duration-500"
           />
@@ -132,14 +91,29 @@ export default function PortfolioHero() {
       </main>
 
       {/* Faint Background Code Snippet */}
-      <div className="absolute bottom-10 left-10 text-[10px] opacity-30 hidden lg:block pointer-events-none select-none">
-        <pre className="font-mono! text-muted">
+      <div className="absolute -bottom-10 left-10 text-[10px] opacity-30 hidden lg:block pointer-events-none select-none">
+        <pre className="font-mono! text-[1rem] text-muted">
 {`import React from 'react';
 
-const Portfolio = () => {
+const Portfolio = ({ content }) => {
   return (
     <div className="container">
-      {status === 'ok'}
+      {status === 'ok' ? <Render content={content} /> : <Loading />}
+    </div>
+  )
+}`}
+        </pre>
+      </div>
+
+      {/* Faint Background Code Snippet */}
+      <div className="absolute top-20 -right-10 text-[10px] opacity-15 hidden lg:block pointer-events-none select-none">
+        <pre className="font-mono! text-[1.2rem] text-muted">
+{`import React from 'react';
+
+const Portfolio = ({ content }) => {
+  return (
+    <div className="container">
+      {status === 'ok' ? <Render content={content} /> : <Loading />}
     </div>
   )
 }`}

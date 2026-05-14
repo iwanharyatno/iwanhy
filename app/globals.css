@@ -14,22 +14,27 @@
   -------------------------------------------------- */
 
   /* Base — The Void */
-  --color-void:          #0f1115;
-  --color-surface:       rgba(255, 255, 255, 0.05);
+  --color-void: #0f1115;
+  --color-surface: rgba(255, 255, 255, 0.05);
   --color-surface-hover: rgba(255, 255, 255, 0.08);
 
   /* Typography */
-  --color-primary:   #ffffff;
-  --color-secondary: #94a3b8; /* slate-400 */
-  --color-muted:     #64748b; /* slate-500 */
+  --color-primary: #ffffff;
+  --color-secondary: #94a3b8;
+  /* slate-400 */
+  --color-muted: #64748b;
+  /* slate-500 */
 
   /* Accents */
-  --color-accent-cyan: #22d3ee; /* cyan-400  — frontend / energy */
-  --color-accent-blue: #3b82f6; /* blue-500  — backend / depth  */
+  --color-accent-cyan: #22d3ee;
+  /* cyan-400  — frontend / energy */
+  --color-accent-blue: #3b82f6;
+  /* blue-500  — backend / depth  */
 
   /* Borders */
-  --color-border:       rgba(255, 255, 255, 0.08);
-  --color-border-glow:  rgba(34, 211, 238, 0.4);  /* cyan glow on hover */
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-glow: rgba(34, 211, 238, 0.4);
+  /* cyan glow on hover */
 
   /* --------------------------------------------------
      Typography
@@ -43,17 +48,18 @@
   /* --------------------------------------------------
      Spacing & Layout
   -------------------------------------------------- */
-  --spacing-container: 80rem; /* max-w-container → 1280px = 7xl */
+  --spacing-container: 80rem;
+  /* max-w-container → 1280px = 7xl */
 
   /* --------------------------------------------------
      Animation / Easing
      Used via var() in custom @keyframes below.
   -------------------------------------------------- */
-  --ease-smooth:  cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
-  --duration-fast:   150ms;
-  --duration-base:   250ms;
-  --duration-slow:   400ms;
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 400ms;
 
   /* --------------------------------------------------
      Shadows — cyan glow variants
@@ -61,7 +67,7 @@
   --shadow-glow-sm: 0 0 10px rgba(34, 211, 238, 0.2);
   --shadow-glow-md: 0 0 20px rgba(34, 211, 238, 0.3);
   --shadow-glow-lg: 0 0 40px rgba(34, 211, 238, 0.15),
-                    0 0 80px rgba(59, 130, 246, 0.1);
+    0 0 80px rgba(59, 130, 246, 0.1);
 
   /* --------------------------------------------------
      Border Radius
@@ -75,7 +81,10 @@
    ============================================================ */
 
 @layer base {
-  *, *::before, *::after {
+
+  *,
+  *::before,
+  *::after {
     box-sizing: border-box;
   }
 
@@ -83,14 +92,15 @@
     background-color: var(--color-void);
     color: var(--color-secondary);
     font-family: var(--font-sans);
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11"; /* Geist alternates */
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    /* Geist alternates */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     scroll-behavior: smooth;
     /* Blueprint grid — The Architect texture */
     background-image:
-      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
     background-size: 40px 40px;
   }
 
@@ -102,15 +112,22 @@
   }
 
   /* Headings default to primary white */
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     color: var(--color-primary);
     font-weight: 700;
-    letter-spacing: -0.025em; /* tracking-tight */
+    letter-spacing: -0.025em;
+    /* tracking-tight */
     line-height: 1.1;
   }
 
   p {
-    line-height: 1.75; /* leading-7 */
+    line-height: 1.75;
+    /* leading-7 */
     color: var(--color-secondary);
   }
 
@@ -120,7 +137,9 @@
     transition: color var(--duration-fast) var(--ease-smooth);
   }
 
-  code, pre, kbd {
+  code,
+  pre,
+  kbd {
     font-family: var(--font-mono);
   }
 
@@ -138,12 +157,19 @@
   }
 
   /* Scrollbar — subtle, on-brand */
-  ::-webkit-scrollbar       { width: 6px; }
-  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
   ::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 3px;
   }
+
   ::-webkit-scrollbar-thumb:hover {
     background: rgba(34, 211, 238, 0.3);
   }
@@ -155,13 +181,12 @@
    ============================================================ */
 
 @layer components {
+
   /* Gradient text — hero role title */
   .text-gradient {
-    background: linear-gradient(
-      135deg,
-      var(--color-accent-cyan) 0%,
-      var(--color-accent-blue) 100%
-    );
+    background: linear-gradient(135deg,
+        var(--color-accent-cyan) 0%,
+        var(--color-accent-blue) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -219,7 +244,7 @@
     cursor: pointer;
     transition:
       background var(--duration-base) var(--ease-smooth),
-      box-shadow  var(--duration-base) var(--ease-smooth);
+      box-shadow var(--duration-base) var(--ease-smooth);
   }
 
   .btn-ghost:hover {
@@ -249,13 +274,14 @@
    ============================================================ */
 
 @layer utilities {
+
   /* Ambient glow blobs — drop these divs in your layout */
   .glow-cyan {
     position: absolute;
     width: 600px;
     height: 600px;
     border-radius: 9999px;
-    background: radial-gradient(circle, rgba(34,211,238,0.12) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(34, 211, 238, 0.12) 0%, transparent 70%);
     filter: blur(80px);
     pointer-events: none;
     user-select: none;
@@ -263,11 +289,11 @@
 
   .glow-blue {
     position: absolute;
-    width: 500px;
-    height: 500px;
+    width: 600px;
+    height: 600px;
     border-radius: 9999px;
-    background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 70%);
-    filter: blur(100px);
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 80%);
+    filter: blur(80px);
     pointer-events: none;
     user-select: none;
   }
@@ -282,15 +308,15 @@
     border-radius: 8px;
     backdrop-filter: blur(8px);
     box-shadow:
-      0 4px 0 rgba(0,0,0,0.4),
-      inset 0 1px 0 rgba(255,255,255,0.05);
+      0 4px 0 rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
     font-family: var(--font-mono);
     font-size: 0.75rem;
     color: var(--color-secondary);
     transition:
-      transform    var(--duration-fast) var(--ease-spring),
+      transform var(--duration-fast) var(--ease-spring),
       border-color var(--duration-fast) var(--ease-smooth),
-      color        var(--duration-fast) var(--ease-smooth);
+      color var(--duration-fast) var(--ease-smooth);
   }
 
   .key-cap:hover {
@@ -305,13 +331,27 @@
    ============================================================ */
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-8px); }
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
 @keyframes pulse-glow {
-  0%, 100% { opacity: 0.6; }
-  50%       { opacity: 1; }
+
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 1;
+  }
 }
 
 @keyframes fade-up {
@@ -319,6 +359,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -336,4 +377,28 @@
 
 .animate-fade-up {
   animation: fade-up var(--duration-slow) var(--ease-smooth) both;
+}
+
+@keyframes flow-down {
+  0% {
+    top: -20%;
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+.animate-flow {
+  animation: flow-down 4s linear infinite;
 }

@@ -1,0 +1,32 @@
+---
+title: "Why I Rebuilt My Portfolio with Next.js"
+date: "2026-05-01"
+summary: "Moving from a React SPA to Next.js gave me static generation, SEO, and a proper blog — here's how I did it."
+tags: ["nextjs", "portfolio", "mdx"]
+published: true
+---
+
+## The Problem with a Plain SPA
+
+My old portfolio was a plain React SPA. Fast to build, but search engines
+couldn't index it — the page rendered blank HTML until JavaScript loaded.
+
+## Why Next.js + MDX
+
+Static generation means every blog post is pre-built to plain HTML at deploy
+time. No database, no serverless function, just a file served from Vercel's CDN.
+
+<Callout type="tip">
+  You can draft posts by setting `published: false` in the frontmatter. They
+  won't appear in the listing but the route still exists locally.
+</Callout>
+
+## The Stack
+
+- **Next.js 16** with App Router
+- **fumadocs-mdx** for the content pipeline
+- **Tailwind CSS v4** for styling
+- **Cloudflare R2** for image storage
+
+Writing in MDX means I can embed live components like `<Callout>` directly
+inside my articles. No CMS, no dashboard — just a `.mdx` file committed to Git.
