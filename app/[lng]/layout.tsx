@@ -26,17 +26,24 @@ export default async function RootLayout({
   params
 }: Readonly<{
   children: React.ReactNode;
-  params: Promise<{lng: Locale}>;
+  params: Promise<{ lng: string }>; // 1. Must be typed as string to pass Next.js validation
 }>) {
-  const { lng } = await params;
+  // 2. Safely assert your explicit Locale type here after resolution
+  const resolvedParams = await params;
+  const lng = resolvedParams.lng as Locale;
+
   return (
     <html
       data-scroll-behavior="smooth"
-      lang="en"
+      lang={lng} // 3. Updated this from "en" to dynamically reflect the current locale
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
-        <NextTopLoader color="#22d3ee" shadow="0 0 10px rgba(34, 211, 238, 0.12)" showForHashAnchor={false} />
+      <body className="min-h-full flex flex-col bg-void text-white">
+        <NextTopLoader 
+          color="#22d3ee" 
+          shadow="0 0 10px rgba(34, 211, 238, 0.12)" 
+          showForHashAnchor={false} 
+        />
         <Navbar lng={lng} />
         {children}
         <Footer lng={lng} />
