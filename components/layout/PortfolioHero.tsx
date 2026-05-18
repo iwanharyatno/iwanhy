@@ -64,7 +64,7 @@ export default async function PortfolioHero({
         <div className="lg:col-span-4 relative w-full aspect-square md:aspect-4/5 rounded-3xl overflow-hidden hidden lg:block border border-(--color-border) shadow-2xl">
           {/* Main Portrait */}
           <img 
-            src="/images/iwan.jpeg" 
+            src="/images/iwan.webp" 
             alt="Iwan Haryatno" 
             className="object-cover w-full h-full opacity-90 grayscale-20 hover:grayscale-0 transition-all duration-500"
           />
