@@ -1,18 +1,23 @@
 import { 
-  FileText, 
   ArrowRight, 
   Mail, 
   Terminal, 
   Database, 
   Cpu, 
-  GitBranch, 
-  Command 
+  GitBranch 
 } from 'lucide-react';
 import { FloatingKey } from '../ui/FloatingKey';
 import { GithubIcon } from '../elements/CustomIcons';
-import Navbar from './NavigationBar';
+import { getDictionary, Locale } from '@/lib/get-dictionary';
 
-export default function PortfolioHero() {
+export default async function PortfolioHero({
+  lng
+}: {
+  lng: Locale
+}) {
+  // Read localized strings on the server side
+  const dict = await getDictionary(lng);
+
   return (
     <div className="relative min-h-screen overflow-hidden pt-24 z-0">
       
@@ -25,36 +30,39 @@ export default function PortfolioHero() {
         {/* Left Column: Text Content */}
         <div className="lg:col-span-8 flex flex-col items-start space-y-8 animate-fade-up">
           <div className="space-y-2">
-            <h2 className="md:text-3xl text-3xl font-normal">Hey there,</h2>
-            <h1 className="md:text-5xl text-4xl">
-              I'm Iwan Haryatno
+            <h2 className="md:text-3xl text-3xl font-normal text-secondary">
+              {dict.hero.greeting}
+            </h2>
+            <h1 className="md:text-5xl text-4xl font-bold text-white tracking-tight">
+              {dict.hero.name}
             </h1>
             <h2 className="md:text-3xl text-3xl text-gradient pt-2 pb-1">
-              Web Developer
+              {dict.hero.role}
             </h2>
           </div>
 
-          <p className="text-lg max-w-xl">
-            Building robust, scalable digital systems with a special focus on performance, clean code, and developer experience. From cloud-native apps to creative AI integrations.
+          <p className="text-lg max-w-xl text-secondary leading-relaxed">
+            {dict.hero.description}
           </p>
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center gap-4 pt-8 w-full sm:w-auto">
-            <button className="btn-ghost w-full sm:w-auto justify-center">
-              Explore My Projects 
+            <a href="#projects" className="btn-ghost w-full sm:w-auto justify-center">
+              {dict.hero.ctaExplore}
               <ArrowRight className="w-4 h-4 btn-arrow" />
-            </button>
-            <button className="glass flex items-center gap-2 px-6 py-3 text-sm font-medium hover:text-white! transition-colors w-full sm:w-auto justify-center rounded-lg cursor-pointer">
-              Get in Touch
+            </a>
+            <a href="mailto:iwanharyatno1@gmail.com" target="_blank" className="glass flex items-center gap-2 px-6 py-3 text-sm font-medium hover:text-white! transition-colors w-full sm:w-auto justify-center rounded-lg cursor-pointer text-white">
+              {dict.hero.ctaContact}
               <Mail className="w-4 h-4" />
-            </button>
+            </a>
           </div>
         </div>
 
         <div className="glow-blue bottom-0 right-0 animate-pulse-glow" style={{ animationDelay: '1.5s' }}></div>
+        
         {/* Right Column: Visuals & Floating Elements */}
         <div className="lg:col-span-4 relative w-full aspect-square md:aspect-4/5 rounded-3xl overflow-hidden hidden lg:block border border-(--color-border) shadow-2xl">
-          {/* Main Portrait Placeholder */}
+          {/* Main Portrait */}
           <img 
             src="/images/iwan.jpeg" 
             alt="Iwan Haryatno" 
@@ -90,7 +98,6 @@ export default function PortfolioHero() {
 
       </main>
 
-      {/* Faint Background Code Snippet */}
       <div className="absolute -bottom-10 left-10 text-[10px] opacity-30 hidden lg:block pointer-events-none select-none">
         <pre className="font-mono! text-[1rem] text-muted">
 {`import React from 'react';
@@ -105,7 +112,6 @@ const Portfolio = ({ content }) => {
         </pre>
       </div>
 
-      {/* Faint Background Code Snippet */}
       <div className="absolute top-20 -right-10 text-[10px] opacity-15 hidden lg:block pointer-events-none select-none">
         <pre className="font-mono! text-[1.2rem] text-muted">
 {`import React from 'react';
@@ -120,9 +126,8 @@ const Portfolio = ({ content }) => {
         </pre>
       </div>
 
-      {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 animate-bounce -translate-x-1/2 flex items-center gap-2 text-sm text-muted hover:text-white cursor-pointer transition-colors">
-        Keep going <ArrowRight className="w-4 h-4 rotate-90" />
+        {dict.hero.scrollHint} <ArrowRight className="w-4 h-4 rotate-90" />
       </div>
     </div>
   );

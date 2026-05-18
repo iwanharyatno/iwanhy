@@ -1,0 +1,146 @@
+{
+    "homePage": {
+        "metaTitle": "Iwan Haryatno — Full-Stack Software Engineer & AI Researcher",
+        "metaDescription": "Portfolio of Iwan Haryatno. Architecting robust, scalable digital systems with a special focus on performance, clean code, edge AI, and containerization technology."
+    },
+    "hero": {
+        "greeting": "Hey there,",
+        "name": "I'm Iwan Haryatno",
+        "role": "Web Developer",
+        "description": "Building robust, scalable digital systems with a special focus on performance, clean code, and developer experience. From cloud-native apps to creative AI integrations.",
+        "ctaExplore": "Explore My Projects",
+        "ctaContact": "Get in Touch",
+        "scrollHint": "Keep going"
+    },
+    "skills": {
+        "subtitle": "Technical Arsenal",
+        "titleMain": "Tools & ",
+        "titleGradient": "Technologies",
+        "description": "A comprehensive overview of the frameworks, languages, and architectures I leverage to bring digital solutions from concept to production.",
+        "categories": {
+            "frontend": {
+                "title": "Frontend Architecture",
+                "description": "Building responsive, highly interactive client-side applications."
+            },
+            "backend": {
+                "title": "Backend & Systems",
+                "description": "Architecting robust APIs, microservices, and database schemas."
+            },
+            "devops": {
+                "title": "DevOps & Infrastructure",
+                "description": "Containerization, cloud deployments, and continuous integration."
+            },
+            "ai": {
+                "title": "AI & Machine Learning",
+                "description": "Implementing local inference, vision models, and LLM integrations."
+            }
+        }
+    },
+    "experience": {
+        "subtitle": "Career Trajectory",
+        "titleMain": "Professional ",
+        "titleGradient": "Experience",
+        "description": "A timeline of my professional journey, highlighting key roles, architectural decisions, and the digital systems I've helped build.",
+        "items": {
+            "suar": {
+                "role": "Software Engineer (Part-Time)",
+                "company": "Suar Inspirasi Produktif",
+                "date": "Sep 2025 – Present",
+                "description": "Collaborated on custom Ghost CMS themes and core functional page development. Built a customized Ghost CMS distribution featuring a tailored editorial post-locking mechanism. Shipped 5+ production-ready components, including a subscription pipeline and interactive popups supporting over 60,000 platform views in an agile turnaround environment."
+            },
+            "promokna": {
+                "role": "Co-Founder & Software Engineer",
+                "company": "Promokna.id",
+                "date": "May 2025 – Present",
+                "description": "Co-founded an event management startup and directed technical execution, including hosting infrastructure, technology stack selection, and backend system architecture. Engineered scalable event registration engines successfully orchestrating operations for 9+ high-capacity events with over 3,000 handled participants."
+            },
+            "intermedia_head": {
+                "role": "Head of Programming Knowledge Division",
+                "company": "INTERMEDIA Amikom Purwokerto",
+                "date": "Jan 2025 – Nov 2025",
+                "description": "Managed an engineering team maintaining three organizational web platforms. Spearheaded the BeSmart monthly curriculum tracking 6 comprehensive tracks for classes. Engineered cloud infrastructure on AWS to handle 120+ active users securely."
+            },
+            "zt_corpora": {
+                "role": "Web Developer Intern",
+                "company": "CV. ZT Corpora (Zahira Media Publisher)",
+                "date": "Feb 2025",
+                "description": "Mitigated system vulnerabilities by debugging core corporate email verification routines. Integrated standard regional multi-courier shipping estimation APIs covering 80,000+ logistics areas. Architected an offline-first QR code inventory system tracking 165+ items and assisted as an educational boot camp technical mentor."
+            },
+            "intermedia_staff": {
+                "role": "Programming Knowledge Staff",
+                "company": "INTERMEDIA Amikom Purwokerto",
+                "date": "Jan 2024 – Nov 2024",
+                "description": "Led implementation of a full-stack Learning Management System (LMS) boosting engagement metrics by 20%. Built optimized document generation workflows that reduced platform certificate delivery delay margins by 40%."
+            },
+            "bakaran": {
+                "role": "Frontend Web Developer (Freelance)",
+                "company": "BakaranProject",
+                "date": "Jun 2023 – Present",
+                "description": "Partnered on multi-platform web applications under structured Git version environments. Maintained agile cross-functional workflow capabilities by implementing auxiliary Golang system modifications and co-authored three technical book chapters regarding web engineering structures."
+            }
+        }
+    },
+    "projects": {
+        "subtitle": "Digital Arsenal",
+        "titleMain": "Project ",
+        "titleGradient": "Portfolio",
+        "description": "A comprehensive collection of production deployments, local AI experiments, mobile applications, and full-stack systems I've architected.",
+        "readDocs": "Read Docs",
+        "emptyState": "No projects added to the portfolio yet."
+    },
+    "journal": {
+        "subtitle": "Writings & Research",
+        "titleMain": "Technical ",
+        "titleGradient": "Notes",
+        "description": "Thoughts on software architecture, AI model optimization, and my findings from transitioning systems into production.",
+        "readMore": "Read Article",
+        "viewAll": "View All Notes",
+        "emptyState": "No public notes available yet. Check back soon."
+    },
+    "navbar": {
+        "home": "Home",
+        "journal": "Journal",
+        "projects": "Projects"
+    },
+    "footer": {
+        "bio": "Building robust, scalable digital systems with a special focus on performance, clean code, and developer experience.",
+        "status": "ALL SYSTEMS NOMINAL",
+        "navHeading": "Navigation",
+        "navHome": "Home",
+        "navProjects": "Projects",
+        "navJournal": "Journal",
+        "navExperience": "Experience",
+        "connectHeading": "Connect",
+        "copyright": "All rights reserved.",
+        "resume": "Resume",
+        "builtWith": "Built with"
+    },
+    "journalPage": {
+        "metaTitle": "Journal — Iwan Haryatno",
+        "metaDescription": "Articles on web development, software architecture, and the things I build.",
+        "subtitle": "Journal",
+        "titleMain": "Technical ",
+        "titleGradient": "Articles",
+        "description": "Thoughts on software architecture, AI model optimization, and my findings from transitioning systems into production.",
+        "readMore": "Read Article",
+        "emptyState": "No public notes available yet. Check back soon."
+    },
+    "journalPost": {
+        "backToJournal": "Back to Journal"
+    },
+    "projectsPage": {
+        "metaTitle": "Projects — Iwan Haryatno",
+        "metaDescription": "A comprehensive list of my web development projects, AI experiments, and architecture designs.",
+        "subtitle": "Digital Arsenal",
+        "titleMain": "Project ",
+        "titleGradient": "Portfolio",
+        "description": "A comprehensive collection of production deployments, local AI experiments, mobile applications, and full-stack systems I've architected.",
+        "readDocs": "Read Docs",
+        "emptyState": "No projects added to the portfolio yet."
+    },
+    "projectPost": {
+        "backToProjects": "Back to Portfolio",
+        "viewRepository": "Repository",
+        "liveDemo": "Live Demo"
+    }
+}

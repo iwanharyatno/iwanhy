@@ -2,21 +2,37 @@ import { blogPostSource } from '@/lib/source'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { BookOpen, Calendar, ArrowRight } from 'lucide-react'
+import { getDictionary, Locale } from '@/lib/get-dictionary'
 
-export const metadata: Metadata = {
-  title: 'Blog — Iwan Haryatno',
-  description: 'Articles on web development, software architecture, and the things I build.',
+interface Props {
+  params: Promise<{ lng: Locale }>;
 }
 
-export default function BlogPage() {
-  const posts = blogPostSource
-    .getPages()
-    .filter(p => p.data.published)
-    .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+// Dynamically generate localized SEO metadata headers 
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lng } = await params;
+  const dict = await getDictionary(lng);
 
-  // Helper to format ISO dates (e.g., "2026-05-01" -> "May 1, 2026")
+  return {
+    title: dict.journalPage.metaTitle,
+    description: dict.journalPage.metaDescription,
+  };
+}
+
+export default async function BlogPage({ params }: Props) {
+  const { lng } = await params;
+  const dict = await getDictionary(lng);
+
+  // Filter content streams specifically mapping to the active route locale context
+  const posts = blogPostSource
+    .getPages(lng)
+    .filter(p => p.data.published)
+    .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
+  // Format dates smoothly based on the viewer's language environment
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
+    const formatLocale = lng === 'id' ? 'id-ID' : 'en-US';
+    return new Date(dateString).toLocaleDateString(formatLocale, {
       year: 'numeric',
       month: 'long',
       day: 'numeric'
@@ -36,13 +52,13 @@ export default function BlogPage() {
         <div className="flex flex-col items-start space-y-4 mb-16 animate-fade-up">
           <h2 className="text-sm font-mono tracking-widest text-accent-blue uppercase flex items-center gap-2">
             <BookOpen className="w-4 h-4" />
-            Journal
+            {dict.journalPage.subtitle}
           </h2>
           <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tight">
-            Technical <span className="text-gradient">Articles</span>
+            {dict.journalPage.titleMain}<span className="text-gradient">{dict.journalPage.titleGradient}</span>
           </h1>
           <p className="text-secondary max-w-2xl leading-relaxed text-lg">
-            Thoughts on software architecture, AI model optimization, and my findings from transitioning systems into production.
+            {dict.journalPage.description}
           </p>
         </div>
 
@@ -52,7 +68,7 @@ export default function BlogPage() {
             {posts.map((post, index) => (
               <article
                 key={post.url}
-                className="glass p-8 flex flex-col relative group animate-fade-up transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(59,130,246,0.1)] h-full"
+                className="glass p-8 flex flex-col relative group animate-fade-up transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] h-full"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 {/* Inner Gradient Reveal on Hover */}
@@ -94,7 +110,7 @@ export default function BlogPage() {
                     href={post.url}
                     className="inline-flex items-center gap-2 text-sm font-medium text-accent-cyan mt-auto w-fit group/btn"
                   >
-                    Read Article
+                    {dict.journalPage.readMore}
                     <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                   </Link>
                 </div>
@@ -105,7 +121,7 @@ export default function BlogPage() {
           /* Empty State Fallback */
           <div className="glass p-16 text-center animate-fade-up flex flex-col items-center">
             <BookOpen className="w-10 h-10 text-muted mb-4" />
-            <p className="text-secondary text-lg">No public notes available yet. Check back soon.</p>
+            <p className="text-secondary text-lg">{dict.journalPage.emptyState}</p>
           </div>
         )}
       </main>

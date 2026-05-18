@@ -1,0 +1,30 @@
+---
+title: "Portofolio Pribadi"
+summary: "Situs pribadi saya — portofolio developer bergaya cyber-minimalist dengan blog MDX statis."
+techStack: ["Next.js", "Tailwind CSS v4", "fumadocs-mdx", "Cloudflare R2", "Vercel"]
+thumbnail: "https://iwanhy-bucket.iwanhy.my.id/posts/portfolio-website.png"
+liveUrl: "https://iwanhy.my.id"
+repoUrl: "https://github.com/iwanharyatno/iwanhy"
+featured: true
+order: 1
+tags: ["portfolio", "seo"]
+date: "2026-05-14"
+---
+
+## Gambaran Umum
+
+Portofolio ini menggantikan React SPA lama saya dengan situs Next.js yang sepenuhnya statis. Setiap halaman — termasuk halaman ini — di-pre-render pada saat build time dan disajikan langsung dari CDN Vercel.
+
+## Tantangan
+
+Menjaga biaya pemeliharaan tetap nol (zero cost) namun tetap memiliki platform blog yang layak serta showcase proyek lengkap dengan halaman detail untuk masing-masing item.
+
+## Apa yang Saya Bangun
+
+Seluruh konten disimpan dalam bentuk berkas `.mdx` yang di-commit langsung ke Git. `fumadocs-mdx` kemudian mengompilasinya saat build time menjadi koleksi data yang memiliki tipe statis (typed collections). Tanpa dashboard CMS, tanpa basis data, dan tanpa tagihan bulanan.
+
+Untuk aset gambar, semuanya disimpan di Cloudflare R2 yang menyediakan free egress (biaya transfer data keluar gratis) — tidak seperti layanan S3 pada umumnya.
+
+## Pembelajaran
+
+Direktif `@theme` pada Tailwind CSS v4 membuat manajemen token desain menjadi sangat praktis dan menyenangkan. Semuanya terpusat dalam satu berkas CSS, dan setiap token secara otomatis dikonversi menjadi utility class siap pakai.

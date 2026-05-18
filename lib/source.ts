@@ -1,18 +1,21 @@
-import { blogPosts, projects } from 'collections/server';
-import { loader } from 'fumadocs-core/source';
-import { toFumadocsSource } from 'fumadocs-mdx/runtime/server';
-
-// Each loader creates a typed Source object with:
-//   .getPages()          → all entries
-//   .getPage([slug])     → single entry by slug
-//   .generateParams()    → static params for generateStaticParams()
+import { blogPosts, projects } from "collections/server";
+import { loader } from "fumadocs-core/source";
+import { toFumadocsSource } from "fumadocs-mdx/runtime/server";
 
 export const blogPostSource = loader({
-  baseUrl: '/journal',
+  baseUrl: "/journal",
   source: toFumadocsSource(blogPosts, []),
-})
+  i18n: {
+    languages: ["id", "en"],
+    defaultLanguage: "en",
+  },
+});
 
 export const projectSource = loader({
-  baseUrl: '/projects',
-  source: toFumadocsSource(projects, [])
-})
+  baseUrl: "/projects",
+  source: toFumadocsSource(projects, []),
+  i18n: {
+    languages: ["id", "en"],
+    defaultLanguage: "en",
+  },
+});

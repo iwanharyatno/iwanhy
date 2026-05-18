@@ -1,0 +1,146 @@
+{
+    "homePage": {
+        "metaTitle": "Iwan Haryatno — Full-Stack Software Engineer & Peneliti AI",
+        "metaDescription": "Portofolio Iwan Haryatno. Merancang sistem digital yang tangguh dan skalabel dengan fokus khusus pada performa, kode yang bersih, edge AI, dan teknologi kontainerisasi."
+    },
+    "hero": {
+        "greeting": "Halo,",
+        "name": "Saya Iwan Haryatno",
+        "role": "Web Developer",
+        "description": "Membangun sistem digital yang tangguh dan skalabel dengan fokus khusus pada performa, kode yang bersih, dan pengalaman pengembang. Dari aplikasi cloud-native hingga integrasi AI yang kreatif.",
+        "ctaExplore": "Lihat Projek Saya",
+        "ctaContact": "Hubungi Saya",
+        "scrollHint": "Scroll ke bawah"
+    },
+    "skills": {
+        "subtitle": "Arsenal Teknis",
+        "titleMain": "Alat & ",
+        "titleGradient": "Teknologi",
+        "description": "Tinjauan komprehensif tentang framework, bahasa pemrograman, dan arsitektur yang saya manfaatkan untuk membawa solusi digital dari konsep hingga tahap produksi.",
+        "categories": {
+            "frontend": {
+                "title": "Arsitektur Frontend",
+                "description": "Membangun aplikasi sisi klien yang responsif dan sangat interaktif."
+            },
+            "backend": {
+                "title": "Backend & Sistem",
+                "description": "Merancang API yang tangguh, mikroservis, dan skema basis data."
+            },
+            "devops": {
+                "title": "DevOps & Infrastruktur",
+                "description": "Kontainerisasi, penyebaran cloud, dan integrasi berkelanjutan."
+            },
+            "ai": {
+                "title": "AI & Machine Learning",
+                "description": "Mengimplementasikan inferensi lokal, model visi, dan integrasi LLM."
+            }
+        }
+    },
+    "experience": {
+        "subtitle": "Trajektori Karir",
+        "titleMain": "Pengalaman ",
+        "titleGradient": "Profesional",
+        "description": "Linimasa perjalanan profesional saya, menyoroti peran kunci, keputusan arsitektur, dan sistem digital yang telah saya bantu bangun.",
+        "items": {
+            "suar": {
+                "role": "Software Engineer (Paruh Waktu)",
+                "company": "Suar Inspirasi Produktif",
+                "date": "Sep 2025 – Sekarang",
+                "description": "Berkolaborasi dalam pengembangan tema kustom Ghost CMS dan halaman inti platform konten utama perusahaan. Membangun distribusi Ghost CMS kustom dengan mekanisme penguncian konten untuk keandalan alur kerja editorial. Merilis 5+ fitur siap produksi termasuk alur langganan yang dioptimalkan, mendukung platform dengan 60.000+ kunjungan."
+            },
+            "promokna": {
+                "role": "Co-Founder & Software Engineer",
+                "company": "Promokna.id",
+                "date": "Mei 2025 – Sekarang",
+                "description": "Mendirikan startup manajemen acara dan memimpin arah teknologi, termasuk arsitektur hosting, pemilihan teknologi stack, dan desain sistem backend inti. Membangun sistem pendaftaran acara yang skalabel untuk mendukung kelancaran operasional bagi 9+ acara dengan lebih dari 3.000+ peserta."
+            },
+            "intermedia_head": {
+                "role": "Kepala Divisi Programming Knowledge",
+                "company": "INTERMEDIA Amikom Purwokerto",
+                "date": "Jan 2025 – Nov 2025",
+                "description": "Memimpin dan mengelola tim yang terdiri dari empat developer untuk memelihara dan meningkatkan tiga situs web organisasi. Mengarahkan perencanaan acara bulanan BeSmart dengan menyusun 6 materi terstruktur untuk kelas pemrograman tingkat dasar dan lanjutan. Merancang sistem berbasis cloud menggunakan AWS untuk mengakomodasi 120+ pengguna aktif."
+            },
+            "zt_corpora": {
+                "role": "Magang Web Developer",
+                "company": "CV. ZT Corpora (Zahira Media Publisher)",
+                "date": "Feb 2025",
+                "description": "Menyelesaikan masalah kritis verifikasi email pada situs web perusahaan. Mengintegrasikan fitur estimasi ongkos kirim menggunakan API yang mencakup tiga ekspedisi besar untuk 80.000+ wilayah pengiriman di Indonesia. Merancang sistem manajemen stok berbasis kode QR untuk 165+ buku dan menjadi mentor bootcamp AI."
+            },
+            "intermedia_staff": {
+                "role": "Staf Divisi Programming Knowledge",
+                "company": "INTERMEDIA Amikom Purwokerto",
+                "date": "Jan 2024 – Nov 2024",
+                "description": "Memimpin pengembangan full-stack Learning Management System (LMS) untuk menyederhanakan pendaftaran aktivitas belajar, menghasilkan peningkatan partisipasi sebesar 20%. Mengimplementasikan fitur pengiriman sertifikat digital otomatis yang memangkas waktu tunggu hingga 40%."
+            },
+            "bakaran": {
+                "role": "Front-End Web Developer (Lepas Waktu)",
+                "company": "BakaranProject",
+                "date": "Jun 2023 – Sekarang",
+                "description": "Berkolaborasi erat dalam proyek aplikasi web menggunakan Git untuk kontrol versi. Menunjukkan adaptabilitas tinggi dengan menguasai dasar-dasar Golang dalam satu hari untuk membantu tugas backend, serta membantu menyusun materi kurikulum dan menulis tiga bab buku pengembangan web."
+            }
+        }
+    },
+    "projects": {
+        "subtitle": "Arsenal Digital",
+        "titleMain": "Portofolio ",
+        "titleGradient": "Proyek",
+        "description": "Koleksi komprehensif dari deployment produksi, eksperimen AI lokal, aplikasi mobile, dan sistem arsitektur full-stack yang saya bangun.",
+        "readDocs": "Baca Dokumen",
+        "emptyState": "Belum ada proyek yang ditambahkan ke portofolio."
+    },
+    "journal": {
+        "subtitle": "Tulisan & Riset",
+        "titleMain": "Catatan ",
+        "titleGradient": "Teknis",
+        "description": "Pemikiran tentang arsitektur perangkat lunak, optimasi model AI, dan temuan saya dari transisi sistem ke tahap produksi.",
+        "readMore": "Baca Artikel",
+        "viewAll": "Lihat Semua Catatan",
+        "emptyState": "Belum ada catatan publik yang tersedia. Silakan kembali lagi nanti."
+    },
+    "navbar": {
+        "home": "Beranda",
+        "journal": "Jurnal",
+        "projects": "Proyek"
+    },
+    "footer": {
+        "bio": "Membangun sistem digital yang tangguh dan skalabel dengan fokus khusus pada performa, kode yang bersih, dan pengalaman pengembang.",
+        "status": "SEMUA SISTEM BERJALAN NORMAL",
+        "navHeading": "Navigasi",
+        "navHome": "Beranda",
+        "navProjects": "Proyek",
+        "navJournal": "Jurnal",
+        "navExperience": "Pengalaman",
+        "connectHeading": "Hubungi",
+        "copyright": "Hak cipta dilindungi undang-undang.",
+        "resume": "Resume",
+        "builtWith": "Dibuat dengan"
+    },
+    "journalPage": {
+        "metaTitle": "Jurnal — Iwan Haryatno",
+        "metaDescription": "Artikel tentang pengembangan web, arsitektur perangkat lunak, dan hal-hal yang saya bangun.",
+        "subtitle": "Jurnal",
+        "titleMain": "Catatan ",
+        "titleGradient": "Teknis",
+        "description": "Pemikiran tentang arsitektur perangkat lunak, optimasi model AI, dan temuan saya dari transisi sistem ke tahap produksi.",
+        "readMore": "Baca Artikel",
+        "emptyState": "Belum ada catatan publik yang tersedia. Silakan kembali lagi nanti."
+    },
+    "journalPost": {
+        "backToJournal": "Kembali ke Jurnal"
+    },
+    "projectsPage": {
+        "metaTitle": "Proyek — Iwan Haryatno",
+        "metaDescription": "Daftar komprehensif proyek pengembangan web, eksperimen AI, dan desain arsitektur saya.",
+        "subtitle": "Arsenal Digital",
+        "titleMain": "Portofolio ",
+        "titleGradient": "Proyek",
+        "description": "Koleksi komprehensif dari deployment produksi, eksperimen AI lokal, aplikasi mobile, dan sistem arsitektur full-stack yang saya bangun.",
+        "readDocs": "Baca Dokumen",
+        "emptyState": "Belum ada proyek yang ditambahkan ke portofolio."
+    },
+    "projectPost": {
+        "backToProjects": "Kembali ke Portofolio",
+        "viewRepository": "Repositori",
+        "liveDemo": "Demo Langsung"
+    }
+}

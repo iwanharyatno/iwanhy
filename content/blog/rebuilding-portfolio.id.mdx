@@ -1,0 +1,28 @@
+---
+title: "Mengapa Saya Membangun Ulang Portofolio Saya dengan Next.js"
+date: "2026-05-01"
+summary: "Beralih dari React SPA ke Next.js memberi saya static generation, SEO, dan blog yang layak — begini cara saya melakukannya."
+tags: ["nextjs", "portfolio", "mdx"]
+published: true
+---
+
+## Masalah dengan SPA Biasa
+
+Portofolio lama saya adalah React SPA biasa. Memang cepat untuk dibangun, tetapi mesin pencari (search engine) tidak dapat mengindeksnya — halaman hanya me-render HTML kosong sampai JavaScript selesai dimuat.
+
+## Mengapa Next.js + MDX
+
+Static generation berarti setiap artikel blog telah dibuat sebelumnya (pre-built) menjadi HTML biasa pada saat deployment. Tanpa basis data, tanpa serverless function, hanya sebuah file statis yang disajikan langsung dari CDN Vercel.
+
+<Callout type="tip">
+  Anda dapat membuat draf artikel dengan mengatur `published: false` pada frontmatter. Artikel tersebut tidak akan muncul dalam daftar rilis, tetapi rutenya tetap dapat diakses secara lokal.
+</Callout>
+
+## Stack Teknologi
+
+- **Next.js 16** dengan App Router
+- **fumadocs-mdx** untuk pipeline konten
+- **Tailwind CSS v4** untuk styling
+- **Cloudflare R2** untuk penyimpanan gambar
+
+Menulis dalam format MDX berarti saya bisa menyematkan komponen interaktif langsung seperti `<Callout>` tepat di dalam artikel saya. Tanpa CMS, tanpa dashboard pihak ketiga — hanya sebuah file `.mdx` bersih yang di-commit ke Git.

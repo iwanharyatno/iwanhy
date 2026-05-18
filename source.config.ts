@@ -34,6 +34,7 @@ export const projects = defineCollections({
     repoUrl:    z.string().url().optional(),
     featured:   z.boolean().default(false),       // show on landing page
     order:      z.number().optional(),            // manual sort on /projects
+    date:      z.string(),                        // ISO 8601: "2026-05-01"
   }),
 });
 

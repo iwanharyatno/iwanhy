@@ -1,16 +1,29 @@
 import React from 'react';
 import Link from 'next/link';
 import { BookOpen, ArrowRight, Calendar } from 'lucide-react';
+// Import your Fumadocs source loader
 import { blogPostSource } from '@/lib/source'; 
+import { getDictionary } from '@/lib/get-dictionary';
+import type { Locale } from '@/lib/get-dictionary';
 
-export default function PortfolioNotes() {
-  const recentPosts = blogPostSource.getPages()
+export default async function PortfolioNotes({
+  lng
+}: {
+  lng: Locale
+}) {
+  // 1. Fetch translations asynchronously on the server
+  const dict = await getDictionary(lng);
+
+  // 2. Query Fumadocs filtered precisely by the active language path parameter
+  const recentPosts = blogPostSource.getPages(lng)
     .filter((page) => page.data.published !== false)
     .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
     .slice(0, 4);
 
+  // 3. Dynamic locale string matching for dates (e.g., May 18, 2026 vs 18 Mei 2026)
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
+    const localeString = lng === 'id' ? 'id-ID' : 'en-US';
+    return new Date(dateString).toLocaleDateString(localeString, {
       year: 'numeric',
       month: 'long',
       day: 'numeric'
@@ -29,13 +42,13 @@ export default function PortfolioNotes() {
         <div className="flex flex-col items-start space-y-4 mb-16 animate-fade-up">
           <h2 className="text-sm font-mono tracking-widest text-accent-blue uppercase flex items-center gap-2">
             <BookOpen className="w-4 h-4" />
-            Writings & Research
+            {dict.journal.subtitle}
           </h2>
-          <h3 className="text-3xl md:text-5xl font-bold">
-            Technical <span className="text-gradient">Notes</span>
+          <h3 className="text-3xl md:text-5xl font-bold text-white">
+            {dict.journal.titleMain}<span className="text-gradient">{dict.journal.titleGradient}</span>
           </h3>
-          <p className="text-secondary max-w-2xl leading-relaxed">
-            Thoughts on software architecture, AI model optimization, and my findings from transitioning systems into production.
+          <p className="text-secondary max-w-2xl leading-relaxed text-lg">
+            {dict.journal.description}
           </p>
         </div>
 
@@ -48,7 +61,7 @@ export default function PortfolioNotes() {
               style={{ animationDelay: `${index * 150}ms` }}
             >
               
-              {/* Subtle background gradient on hover */}
+              {/* Subtle background gradient overlay on hover */}
               <div className="absolute inset-0 bg-linear-to-br from-accent-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-(--radius-card) pointer-events-none"></div>
 
               <div className="relative z-10 flex flex-col h-full">
@@ -59,7 +72,7 @@ export default function PortfolioNotes() {
                     <time dateTime={post.data.date}>{formatDate(post.data.date)}</time>
                   </div>
                   
-                  {/* Display up to 2 tags */}
+                  {/* Localized Badges Container */}
                   {post.data.tags && post.data.tags.length > 0 && (
                     <div className="flex gap-2">
                       {post.data.tags.slice(0, 2).map(tag => (
@@ -73,7 +86,7 @@ export default function PortfolioNotes() {
 
                 {/* Title */}
                 <Link href={post.url} className="block group/title mb-3">
-                  <h4 className="text-2xl font-bold text-white group-hover/title:text-accent-cyan transition-colors">
+                  <h4 className="text-2xl font-bold text-white group-hover/title:text-accent-cyan transition-colors leading-tight">
                     {post.data.title}
                   </h4>
                 </Link>
@@ -88,7 +101,7 @@ export default function PortfolioNotes() {
                   href={post.url}
                   className="inline-flex items-center gap-2 text-sm font-medium text-accent-cyan mt-auto w-fit group/btn"
                 >
-                  Read Article
+                  {dict.journal.readMore}
                   <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                 </Link>
               </div>
@@ -96,19 +109,19 @@ export default function PortfolioNotes() {
           ))}
         </div>
 
-        {/* Empty State Fallback (If no published posts exist yet) */}
+        {/* Empty State Fallback */}
         {recentPosts.length === 0 && (
           <div className="glass p-12 text-center animate-fade-up flex flex-col items-center">
             <BookOpen className="w-8 h-8 text-muted mb-4" />
-            <p className="text-secondary">No public notes available yet. Check back soon.</p>
+            <p className="text-secondary text-lg">{dict.journal.emptyState}</p>
           </div>
         )}
 
         {/* View All CTA */}
         {recentPosts.length > 0 && (
           <div className="mt-16 flex justify-center animate-fade-up" style={{ animationDelay: '600ms' }}>
-            <Link href="/journal" className="btn-ghost">
-              View All Notes
+            <Link href={`/${lng}/journal`} className="btn-ghost">
+              {dict.journal.viewAll}
             </Link>
           </div>
         )}
