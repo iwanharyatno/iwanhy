@@ -3,17 +3,15 @@ interface CodeBlockProps {
   'data-language'?: string
 }
 
-// Fumadocs + Shiki pass syntax-highlighted HTML as children.
-// This component is purely the visual shell.
 export function CodeBlock({ children, 'data-language': lang }: CodeBlockProps) {
   return (
-    <div className="relative my-6 rounded-card border border-border overflow-hidden">
+    <div className="relative my-6 overflow-hidden border border-border">
       {lang && (
-        <span className="absolute top-3 right-4 text-xs font-mono text-muted select-none">
+        <span className="absolute right-3 top-2 select-none font-mono text-xs text-muted">
           {lang}
         </span>
       )}
-      <pre className="overflow-x-auto p-4 text-sm bg-[#0d1117]">
+      <pre className="overflow-x-auto bg-surface p-4 text-sm">
         {children}
       </pre>
     </div>

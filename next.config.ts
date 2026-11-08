@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
+        hostname: 'iwanhy-bucket.iwanhy.my.id',
+      },
+      {
+        protocol: 'https',
         hostname: '**.r2.dev',
       },
     ],

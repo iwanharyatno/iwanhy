@@ -5,7 +5,7 @@ import PortfolioExperience from "@/components/layout/PortfolioExperience";
 import PortfolioProjects from "@/components/layout/Projects";
 import PortfolioNotes from "@/components/layout/Notes";
 import { getDictionary } from "@/lib/get-dictionary";
-import { Locale } from "@/lib/get-dictionary";
+import type { Locale } from "@/lib/get-dictionary";
 
 interface Props {
   params: Promise<{ lng: Locale }>;
@@ -33,12 +33,12 @@ export default async function Home({ params }: Props) {
   const { lng } = await params;
 
   return (
-    <>
+    <main className="flex-1">
       <PortfolioHero lng={lng} />
       <PortfolioSkills lng={lng} />
       <PortfolioExperience lng={lng} />
       <PortfolioProjects lng={lng} />
       <PortfolioNotes lng={lng} />
-    </>
+    </main>
   );
 }

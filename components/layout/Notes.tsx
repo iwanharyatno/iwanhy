@@ -1,131 +1,76 @@
-import React from 'react';
-import Link from 'next/link';
-import { BookOpen, ArrowRight, Calendar } from 'lucide-react';
-// Import your Fumadocs source loader
-import { blogPostSource } from '@/lib/source'; 
-import { getDictionary } from '@/lib/get-dictionary';
-import type { Locale } from '@/lib/get-dictionary';
+import Link from "next/link";
+import { blogPostSource } from "@/lib/source";
+import { getDictionary } from "@/lib/get-dictionary";
+import type { Locale } from "@/lib/get-dictionary";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+import { PostCard } from "@/components/ui/PostCard";
+import { EmptyState } from "@/components/ui/EmptyState";
 
-export default async function PortfolioNotes({
-  lng
-}: {
-  lng: Locale
-}) {
-  // 1. Fetch translations asynchronously on the server
+export default async function PortfolioNotes({ lng }: { lng: Locale }) {
   const dict = await getDictionary(lng);
 
-  // 2. Query Fumadocs filtered precisely by the active language path parameter
-  const recentPosts = blogPostSource.getPages(lng)
+  const recentPosts = blogPostSource
+    .getPages(lng)
     .filter((page) => page.data.published !== false)
     .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
     .slice(0, 4);
 
-  // 3. Dynamic locale string matching for dates (e.g., May 18, 2026 vs 18 Mei 2026)
   const formatDate = (dateString: string) => {
-    const localeString = lng === 'id' ? 'id-ID' : 'en-US';
+    const localeString = lng === "id" ? "id-ID" : "en-US";
     return new Date(dateString).toLocaleDateString(localeString, {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
+      year: "numeric",
+      month: "long",
+      day: "numeric",
     });
   };
 
   return (
-    <section id="notes" className="relative py-24 border-t border-(--color-border) overflow-hidden">
-      
-      {/* Ambient Glow */}
-      <div className="glow-blue bottom-[10%] left-[-10%] opacity-30 pointer-events-none"></div>
-
-      <div className="container-portfolio relative z-10">
-        
-        {/* Section Header */}
-        <div className="flex flex-col items-start space-y-4 mb-16 animate-fade-up">
-          <h2 className="text-sm font-mono tracking-widest text-accent-blue uppercase flex items-center gap-2">
-            <BookOpen className="w-4 h-4" />
-            {dict.journal.subtitle}
-          </h2>
-          <h3 className="text-3xl md:text-5xl font-bold text-white">
-            {dict.journal.titleMain}<span className="text-gradient">{dict.journal.titleGradient}</span>
-          </h3>
-          <p className="text-secondary max-w-2xl leading-relaxed text-lg">
-            {dict.journal.description}
-          </p>
-        </div>
-
-        {/* 2-Column Grid for Articles */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {recentPosts.map((post, index) => (
-            <article 
-              key={post.url}
-              className="glass p-8 flex flex-col relative group animate-fade-up transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(59,130,246,0.1)]"
-              style={{ animationDelay: `${index * 150}ms` }}
-            >
-              
-              {/* Subtle background gradient overlay on hover */}
-              <div className="absolute inset-0 bg-linear-to-br from-accent-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-(--radius-card) pointer-events-none"></div>
-
-              <div className="relative z-10 flex flex-col h-full">
-                {/* Meta: Date & Tags */}
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-2 text-sm font-mono text-muted">
-                    <Calendar className="w-4 h-4" />
-                    <time dateTime={post.data.date}>{formatDate(post.data.date)}</time>
-                  </div>
-                  
-                  {/* Localized Badges Container */}
-                  {post.data.tags && post.data.tags.length > 0 && (
-                    <div className="flex gap-2">
-                      {post.data.tags.slice(0, 2).map(tag => (
-                        <span key={tag} className="badge text-[10px]! py-0.5! px-2! bg-void">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-
-                {/* Title */}
-                <Link href={post.url} className="block group/title mb-3">
-                  <h4 className="text-2xl font-bold text-white group-hover/title:text-accent-cyan transition-colors leading-tight">
-                    {post.data.title}
-                  </h4>
-                </Link>
-
-                {/* Summary */}
-                <p className="text-secondary leading-relaxed mb-8 grow">
-                  {post.data.summary}
-                </p>
-
-                {/* Read More Action */}
-                <Link 
-                  href={post.url}
-                  className="inline-flex items-center gap-2 text-sm font-medium text-accent-cyan mt-auto w-fit group/btn"
-                >
-                  {dict.journal.readMore}
-                  <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                </Link>
-              </div>
-            </article>
-          ))}
-        </div>
-
-        {/* Empty State Fallback */}
-        {recentPosts.length === 0 && (
-          <div className="glass p-12 text-center animate-fade-up flex flex-col items-center">
-            <BookOpen className="w-8 h-8 text-muted mb-4" />
-            <p className="text-secondary text-lg">{dict.journal.emptyState}</p>
-          </div>
-        )}
-
-        {/* View All CTA */}
-        {recentPosts.length > 0 && (
-          <div className="mt-16 flex justify-center animate-fade-up" style={{ animationDelay: '600ms' }}>
-            <Link href={`/${lng}/journal`} className="btn-ghost">
+    <section id="notes" className="py-16 md:py-24">
+      <div className="container-portfolio">
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <SectionHeader
+            eyebrow={dict.journal.eyebrow}
+            title={dict.journal.title}
+            description={dict.journal.description}
+          />
+          {recentPosts.length > 0 ? (
+            <Link href={`/${lng}/journal`} className="btn-ghost w-fit">
               {dict.journal.viewAll}
             </Link>
+          ) : null}
+        </div>
+
+        {recentPosts.length > 0 ? (
+          <div className="mt-10 space-y-6">
+            <PostCard
+              post={recentPosts[0]}
+              formattedDate={formatDate(recentPosts[0].data.date)}
+              readMore={dict.journal.readMore}
+              featured
+            />
+            {recentPosts.length > 1 ? (
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                {recentPosts.slice(1).map((post) => (
+                  <PostCard
+                    key={post.url}
+                    post={post}
+                    formattedDate={formatDate(post.data.date)}
+                    readMore={dict.journal.readMore}
+                  />
+                ))}
+              </div>
+            ) : null}
+          </div>
+        ) : (
+          <div className="mt-10">
+            <EmptyState
+              title={dict.journal.emptyTitle}
+              description={dict.journal.emptyDescription}
+              actionHref={`/${lng}/projects`}
+              actionLabel={dict.journal.emptyAction}
+            />
           </div>
         )}
-
       </div>
     </section>
   );

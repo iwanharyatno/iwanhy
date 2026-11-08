@@ -4,99 +4,106 @@ import Link from 'next/link'
 import { CodeBlock } from './components/mdx/CodeBlock'
 import { Callout } from './components/mdx/Callout'
 
-// Next.js picks this up automatically — no manual import needed in pages.
-// To extend per-page, call useMDXComponents({ MyExtra: ... }) at the render site.
-export function useMDXComponents(components: MDXComponents): MDXComponents {
-  return {
-    // --- Typography ---
-    h1: ({ children }) => (
-      <h1 className="text-3xl font-bold text-primary mt-10 mb-4 tracking-tight">
-        {children}
-      </h1>
-    ),
-    h2: ({ children }) => (
-      <h2 className="text-2xl font-semibold text-primary mt-8 mb-3 border-b border-border pb-2">
-        {children}
-      </h2>
-    ),
-    h3: ({ children }) => (
-      <h3 className="text-xl font-semibold text-primary mt-6 mb-2">
-        {children}
-      </h3>
-    ),
-    p: ({ children }) => (
-      <p className="text-secondary leading-7 mb-4">
-        {children}
-      </p>
-    ),
+const baseComponents: MDXComponents = {
+  h1: ({ children }) => (
+    <h1 className="mb-4 mt-10 text-3xl font-bold tracking-tight text-primary">
+      {children}
+    </h1>
+  ),
+  h2: ({ children }) => (
+    <h2 className="mb-3 mt-8 border-b border-border pb-2 text-2xl font-semibold text-primary">
+      {children}
+    </h2>
+  ),
+  h3: ({ children }) => (
+    <h3 className="mb-2 mt-6 text-xl font-semibold text-primary">
+      {children}
+    </h3>
+  ),
+  p: ({ children }) => (
+    <p className="mb-4 leading-7 text-secondary">
+      {children}
+    </p>
+  ),
 
-    // --- Links ---
-    // Internal links use Next.js Link; external open in new tab
-    a: ({ href = '', children }) => {
-      const isInternal = href.startsWith('/')
-      return isInternal
-        ? (
-          <Link href={href} className="text-accent-cyan hover:underline underline-offset-4">
-            {children}
-          </Link>
-        )
-        : (
-          <a
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-accent-cyan hover:underline underline-offset-4"
-          >
-            {children}
-          </a>
-        )
-    },
+  a: ({ href = '', children }) => {
+    const isInternal = href.startsWith('/')
+    return isInternal
+      ? (
+        <Link href={href} className="text-accent hover:underline underline-offset-4">
+          {children}
+        </Link>
+      )
+      : (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-accent hover:underline underline-offset-4"
+        >
+          {children}
+        </a>
+      )
+  },
 
-    // --- Code ---
-    // Fumadocs runs Shiki at build time — pre is just the container shell
-    pre: ({ children, ...props }) => (
-      <CodeBlock {...props}>{children}</CodeBlock>
-    ),
-    // Inline code
-    code: ({ children }) => (
-      <code className="bg-surface text-accent-cyan font-mono text-sm px-1.5 py-0.5 rounded border border-border">
-        {children}
-      </code>
-    ),
+  pre: ({ children, ...props }) => (
+    <CodeBlock {...props}>{children}</CodeBlock>
+  ),
+  code: ({ children }) => (
+    <code className="border border-border bg-surface px-1.5 py-0.5 font-mono text-sm text-accent">
+      {children}
+    </code>
+  ),
 
-    // --- Media ---
-    img: ({ src, alt }) => (
+  img: ({ src, alt }) =>
+    src ? (
       <Image
-        src={src!}
+        src={src}
         alt={alt ?? ''}
         width={800}
         height={450}
-        className="rounded-card my-6 w-full object-cover border border-border"
+        className="my-6 w-full border border-border object-cover"
       />
-    ),
+    ) : null,
 
-    // --- Block elements ---
-    blockquote: ({ children }) => (
-      <blockquote className="border-l-2 border-accent-cyan pl-4 my-4 text-muted italic">
-        {children}
-      </blockquote>
-    ),
-    ul: ({ children }) => (
-      <ul className="list-disc list-inside text-secondary space-y-1 mb-4 pl-2">
-        {children}
-      </ul>
-    ),
-    ol: ({ children }) => (
-      <ol className="list-decimal list-inside text-secondary space-y-1 mb-4 pl-2">
-        {children}
-      </ol>
-    ),
-    hr: () => <hr className="border-border my-8" />,
+  blockquote: ({ children }) => (
+    <blockquote className="my-4 border-l-2 border-accent pl-4 text-muted">
+      {children}
+    </blockquote>
+  ),
+  ul: ({ children }) => (
+    <ul className="mb-4 list-disc space-y-1 pl-6 text-secondary">
+      {children}
+    </ul>
+  ),
+  ol: ({ children }) => (
+    <ol className="mb-4 list-decimal space-y-1 pl-6 text-secondary">
+      {children}
+    </ol>
+  ),
+  hr: () => <hr className="my-8 border-border" />,
+  table: ({ children }) => (
+    <div className="my-6 overflow-x-auto border border-border">
+      <table className="w-full border-collapse text-sm">{children}</table>
+    </div>
+  ),
+  th: ({ children }) => (
+    <th className="border-b border-border px-3 py-2 text-left font-semibold text-primary">
+      {children}
+    </th>
+  ),
+  td: ({ children }) => (
+    <td className="border-b border-border px-3 py-2 text-secondary">{children}</td>
+  ),
 
-    // --- Custom MDX components (usable directly in .mdx files) ---
-    Callout,
+  Callout,
+}
 
-    // Spread any page-level extras passed at render site
+export const mdxComponents = baseComponents
+
+export function useMDXComponents(components: MDXComponents): MDXComponents {
+  return {
+    ...baseComponents,
     ...components,
   }
 }

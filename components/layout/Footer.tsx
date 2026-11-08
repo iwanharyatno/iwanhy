@@ -1,109 +1,103 @@
-import React from 'react';
-import Link from 'next/link';
-import { Mail, Terminal, XIcon } from 'lucide-react';
-import { GithubIcon, LinkedinIcon } from '../elements/CustomIcons'; // Adjust path as needed
-import { getDictionary, Locale } from '@/lib/get-dictionary';
+import Link from "next/link";
+import { GithubIcon, LinkedinIcon, XIcon } from "../elements/CustomIcons";
+import { getDictionary } from "@/lib/get-dictionary";
+import type { Locale } from "@/lib/get-dictionary";
 
-export default async function Footer({
-  lng
-}: {
-  lng: Locale
-}) {
+export default async function Footer({ lng }: { lng: Locale }) {
   const dict = await getDictionary(lng);
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative border-t border-(--color-border) bg-void pt-16 pb-8 overflow-hidden">
-
-      {/* Subtle Ambient Glow */}
-      <div className="glow-cyan bottom-[-20%] left-[20%] opacity-10 pointer-events-none"></div>
-
-      <div className="container-portfolio relative z-10 animate-fade-up">
-
-        {/* Top Section: Brand & Links */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-
-          {/* Column 1: Brand & Bio (Spans 2 columns on desktop) */}
-          <div className="col-span-1 md:col-span-2">
-            <Link href={`/${lng}`} className="text-3xl font-bold mb-4 inline-block group text-white">
-              IHY<span className="text-accent-cyan group-hover:text-white transition-colors">.</span>
+    <footer>
+      <div className="container-portfolio py-12 md:py-16">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-12">
+          <div className="md:col-span-6">
+            <Link
+              href={`/${lng}`}
+              className="inline-flex min-h-11 items-center text-xl font-bold text-primary"
+            >
+              IHY<span className="text-accent">.</span>
             </Link>
-            <p className="text-secondary max-w-sm mb-6 leading-relaxed">
-              {dict.footer.bio}
-            </p>
-
-            {/* Cyber Theme Status Indicator */}
-            <div className="flex items-center gap-3 text-xs font-mono text-muted bg-surface w-fit px-3 py-1.5 rounded-full border border-(--color-border)">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-cyan opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-cyan"></span>
-              </span>
-              {dict.footer.status}
-            </div>
+            <p className="mt-3 max-w-sm text-sm text-secondary">{dict.footer.bio}</p>
           </div>
 
-          {/* Column 2: Internal Navigation */}
-          <div>
-            <h4 className="text-white font-bold mb-4 tracking-wide">{dict.footer.navHeading}</h4>
-            <ul className="space-y-3 text-sm text-secondary">
+          <nav aria-label={dict.footer.navLabel} className="md:col-span-3">
+            <h3 className="text-sm font-bold text-primary">{dict.footer.navHeading}</h3>
+            <ul className="mt-2 text-sm">
               <li>
-                <Link href={`/${lng}`} className="hover:text-accent-cyan transition-colors">{dict.footer.navHome}</Link>
+                <Link href={`/${lng}`} className="inline-flex min-h-11 items-center text-secondary hover:text-accent">
+                  {dict.footer.navHome}
+                </Link>
               </li>
               <li>
-                <Link href={`/${lng}/projects`} className="hover:text-accent-cyan transition-colors">{dict.footer.navProjects}</Link>
+                <Link href={`/${lng}/projects`} className="inline-flex min-h-11 items-center text-secondary hover:text-accent">
+                  {dict.footer.navProjects}
+                </Link>
               </li>
               <li>
-                <Link href={`/${lng}/journal`} className="hover:text-accent-cyan transition-colors">{dict.footer.navJournal}</Link>
+                <Link href={`/${lng}/journal`} className="inline-flex min-h-11 items-center text-secondary hover:text-accent">
+                  {dict.footer.navJournal}
+                </Link>
               </li>
               <li>
-                <Link href={`/${lng}/#career`} className="hover:text-accent-cyan transition-colors">{dict.footer.navExperience}</Link>
+                <Link href={`/${lng}/#career`} className="inline-flex min-h-11 items-center text-secondary hover:text-accent">
+                  {dict.footer.navExperience}
+                </Link>
+              </li>
+            </ul>
+          </nav>
+
+          <div className="md:col-span-3">
+            <h3 className="text-sm font-bold text-primary">{dict.footer.connectHeading}</h3>
+            <ul className="mt-2 text-sm">
+              <li>
+                <a
+                  href="https://github.com/iwanharyatno"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-11 items-center gap-2 text-secondary hover:text-accent"
+                >
+                  <GithubIcon className="h-4 w-4" /> GitHub
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://linkedin.com/in/iwanharyatno"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-11 items-center gap-2 text-secondary hover:text-accent"
+                >
+                  <LinkedinIcon className="h-4 w-4" /> LinkedIn
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://x.com/iwanharyatno"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-11 items-center gap-2 text-secondary hover:text-accent"
+                >
+                  <XIcon className="h-4 w-4" /> X
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:iwanharyatno1@gmail.com"
+                  className="inline-flex min-h-11 items-center gap-2 text-secondary hover:text-accent"
+                >
+                  Email
+                </a>
               </li>
             </ul>
           </div>
-
-          {/* Column 3: External Connect */}
-          <div>
-            <h4 className="text-white font-bold mb-4 tracking-wide">{dict.footer.connectHeading}</h4>
-            <ul className="space-y-3 text-sm text-secondary">
-              <li>
-                <a href="https://github.com/iwanharyatno" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white transition-colors group">
-                  <GithubIcon className="w-4 h-4 group-hover:text-white text-muted transition-colors" /> GitHub
-                </a>
-              </li>
-              <li>
-                <a href="https://linkedin.com/in/iwanharyatno" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-accent-blue transition-colors group">
-                  <LinkedinIcon className="w-4 h-4 group-hover:text-accent-blue text-muted transition-colors" /> LinkedIn
-                </a>
-              </li>
-              <li>
-                <a href="https://x.com/iwanharyatno" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white transition-colors group">
-                  <XIcon className="w-4 h-4 group-hover:text-white text-muted transition-colors" /> X (Twitter)
-                </a>
-              </li>
-              <li>
-                <a href="mailto:iwanharyatno1@gmail.com" className="flex items-center gap-2 hover:text-accent-cyan transition-colors group">
-                  <Mail className="w-4 h-4 group-hover:text-accent-cyan text-muted transition-colors" /> Email
-                </a>
-              </li>
-            </ul>
-          </div>
-
         </div>
 
-        {/* Bottom Section: Copyright & Tech Stack */}
-        <div className="pt-8 border-t border-(--color-border) flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-muted">
+        <div className="mt-10 flex flex-col gap-2 border-t border-border pt-6 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
           <p>© {currentYear} Iwan Haryatno. {dict.footer.copyright}</p>
-
-          <div className="flex items-center gap-4">
-            <a href="#" className="hover:text-secondary transition-colors">{dict.footer.resume}</a>
-            <span className="opacity-30">|</span>
-            <div className="font-mono flex items-center gap-1.5">
-              <Terminal className="w-3 h-3 text-accent-cyan" />
-              {dict.footer.builtWith} Next.js
-            </div>
-          </div>
+          <p className="font-mono">
+            {dict.footer.builtWith} Next.js
+          </p>
         </div>
-
       </div>
     </footer>
   );
