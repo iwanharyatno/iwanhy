@@ -62,7 +62,7 @@ export default async function ProjectPostPage({ params }: Props) {
             {dict.projectPost.backToProjects}
           </Link>
 
-          <header className="mt-8 border-b border-border pb-8">
+          <header className="mt-8">
             {page.data.techStack && page.data.techStack.length > 0 ? (
               <ul className="flex flex-wrap gap-2">
                 {page.data.techStack.map((tech: string) => (
@@ -112,9 +112,15 @@ export default async function ProjectPostPage({ params }: Props) {
                 </div>
               ) : null}
             </div>
+            <div className="mt-4">
+              <img
+                src={page.data.thumbnail}
+                alt={page.data.title}
+                className="h-auto w-full" />
+            </div>
           </header>
 
-          <article className="mt-10">
+          <article className="mt-10 max-w-3xl mx-auto">
             <div className="prose-custom">
               <MDX components={mdxComponents} />
             </div>

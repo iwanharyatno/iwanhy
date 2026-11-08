@@ -11,12 +11,12 @@ const baseComponents: MDXComponents = {
     </h1>
   ),
   h2: ({ children }) => (
-    <h2 className="mb-3 mt-8 border-b border-border pb-2 text-2xl font-semibold text-primary">
+    <h2 className="mb-3 mt-8 text-xl pb-2 font-semibold text-primary">
       {children}
     </h2>
   ),
   h3: ({ children }) => (
-    <h3 className="mb-2 mt-6 text-xl font-semibold text-primary">
+    <h3 className="mb-2 mt-6 font-semibold text-primary">
       {children}
     </h3>
   ),

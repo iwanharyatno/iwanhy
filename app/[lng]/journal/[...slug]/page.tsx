@@ -83,7 +83,7 @@ export default async function PostPage({ params }: Props) {
             </div>
           </header>
 
-          <article className="mt-10">
+          <article className="mt-10 max-w-3xl mx-auto">
             <div className="prose-custom">
               <MDX components={mdxComponents} />
             </div>
