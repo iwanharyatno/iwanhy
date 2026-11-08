@@ -8,7 +8,7 @@ export default async function Footer({ lng }: { lng: Locale }) {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer>
+    <footer className="border-t border-border bg-void">
       <div className="container-portfolio py-12 md:py-16">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-12">
           <div className="md:col-span-6">
