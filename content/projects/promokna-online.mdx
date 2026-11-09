@@ -1,0 +1,33 @@
+---
+title: "Promokna.online: SaaS Event Management Platform"
+summary: "A multi-tenant SaaS platform for large-scale event registration, payments, and on-site ticketing."
+techStack: ["TailwindCSS", "Alpine.js", "Laravel", "MySQL"]
+thumbnail: "https://iwanhy-bucket.iwanhy.my.id/projects/promokna-online-9c5b958c.webp"
+liveUrl: "https://promokna.online"
+featured: true
+order: 2
+date: "2026-11-09"
+---
+
+## Overview
+
+Promokna.online is a Software-as-a-Service platform for managing large events. It covers multi-tenant event pages, automated registration payments, and on-site ticket operations. Each organizer manages registration pages, ticket quotas, and participant data independently.
+
+## What the platform handles
+
+- **Multi-tenant architecture.** Organizers run their own registration pages, ticket quotas, and participant data without sharing a single admin view.
+- **Payment gateway integration.** Registration payments are verified automatically and electronic tickets are issued after confirmation.
+- **Barcode check-in.** Staff scan barcode or QR tickets at the venue to verify attendance without long queues.
+- **Scale.** The platform has operated 9+ events with more than 3,000 participants.
+
+## Challenges
+
+The first serious traffic spike exposed a shared-hosting limit. A burst of more than 20k requests took the server down. Along with upgrading the shared-hosting package, I changed the runtime configuration. Sessions moved to cookies, cache moved to files, analytics was disabled during the peak, and global plus per-user rate limits were added.
+
+The global limit caps total traffic. The per-user limit reduces the risk of one client exhausting the server. When a request hits the limit, the platform serves an informative queue page instead of a technical server error.
+
+Midtrans payment notifications sometimes arrived late or were missed. Shared hosting cannot keep a permanent queue worker or scheduler, so I added an Artisan fallback command that expires unpaid registrations after a fixed cut-off. A cron job runs the command and keeps ticket state consistent.
+
+## Stack
+
+Laravel, MySQL, TailwindCSS, and Alpine.js.

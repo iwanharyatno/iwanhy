@@ -3,6 +3,7 @@ import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/NavigationBar";
 import Footer from "@/components/layout/Footer";
+import NextTopLoader from "nextjs-toploader";
 import { getDictionary } from "@/lib/get-dictionary";
 import type { Locale } from "@/lib/get-dictionary";
 
@@ -37,6 +38,12 @@ export default async function RootLayout({
       className={`${jetbrains.variable} h-full`}
     >
       <body className="min-h-full flex flex-col bg-void text-secondary">
+        <NextTopLoader 
+          color="#ff9f30" 
+          shadow="0 0 10px rgba(255, 159, 48, 0.12)" 
+          showSpinner={false}
+          showForHashAnchor={false} 
+        />
         <Navbar lng={lng} labels={dict.navbar} />
         {children}
         <Footer lng={lng} />

@@ -1,0 +1,33 @@
+---
+title: "Promokna.online: Platform Manajemen Event SaaS"
+summary: "Platform SaaS multi-tenant untuk registrasi event berskala besar, pembayaran, dan tiket on-site."
+techStack: ["TailwindCSS", "Alpine.js", "Laravel", "MySQL"]
+thumbnail: "https://iwanhy-bucket.iwanhy.my.id/projects/promokna-online-9c5b958c.webp"
+liveUrl: "https://promokna.online"
+featured: true
+order: 2
+date: "2026-11-09"
+---
+
+## Gambaran Umum
+
+Promokna.online adalah platform Software-as-a-Service untuk mengelola event berskala besar. Platform ini mencakup halaman event multi-tenant, pembayaran pendaftaran otomatis, dan operasional tiket on-site. Setiap penyelenggara mengelola halaman registrasi, kuota tiket, dan data peserta secara mandiri.
+
+## Cakupan platform
+
+- **Arsitektur multi-tenant.** Penyelenggara memiliki halaman registrasi, kuota tiket, dan data peserta sendiri tanpa berbagi satu tampilan admin.
+- **Integrasi payment gateway.** Pembayaran pendaftaran diverifikasi otomatis dan tiket elektronik diterbitkan setelah pembayaran dikonfirmasi.
+- **Check-in berbasis barcode.** Staf memindai tiket barcode atau QR di lokasi event untuk memverifikasi keikutsertaan tanpa antrean panjang.
+- **Skalabilitas.** Platform sudah menangani operasional 9+ event dengan total lebih dari 3.000 peserta.
+
+## Tantangan
+
+Lonjakan traffic pertama membuka batas shared hosting. Burst lebih dari 20k request membuat server down. Selain upgrade paket shared hosting, konfigurasi runtime diubah. Session dipindah ke cookie, cache dipindah ke file, analitik dimatikan sementara, dan throttle rate-limiting global serta individual ditambahkan.
+
+Limit global menjaga batas keseluruhan traffic. Limit individual mengurangi risiko satu klien menghabiskan kapasitas server. Saat request mencapai limit, platform menampilkan halaman antrean yang informatif, bukan halaman error teknis.
+
+Notifikasi pembayaran Midtrans terkadang terlambat atau terlewat. Shared hosting tidak memungkinkan queue worker atau scheduler berjalan permanen, jadi saya menambahkan command Artisan fallback yang meng-expire pendaftaran yang belum dibayar setelah cut-off waktu tertentu. Cron job menjalankan command tersebut agar status tiket tetap konsisten.
+
+## Stack
+
+Laravel, MySQL, TailwindCSS, dan Alpine.js.

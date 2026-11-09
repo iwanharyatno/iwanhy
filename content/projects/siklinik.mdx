@@ -1,0 +1,28 @@
+---
+title: "SiKLINIK: Healthcare Information System"
+summary: "A LAN-based clinic system that connects patient registration, medical records, pharmacy stock, and prescription pickup."
+techStack: ["Laravel", "MySQL", ".NET Windows Forms", "Refit"]
+thumbnail: "https://iwanhy-bucket.iwanhy.my.id/projects/siklinik-0881ed0f.webp"
+order: 4
+date: "2026-11-09"
+---
+
+## Overview
+
+SiKLINIK is an integrated healthcare information system for a local clinic. It connects patient registration, doctor diagnosis records, pharmacy preparation, and prescription pickup over a local area network (LAN).
+
+## What the system handles
+
+- **Unified server architecture.** A C# desktop client at the registration and cashier desk talks to a Laravel web system through one server architecture.
+- **Structured medical records.** Patient history, diagnoses, and prescriptions stay in one consistent record, so clinic staff can move through the workflow without re-entering the same data.
+- **Pharmacy stock control.** Inventory calculations follow the prescriptions being processed, which reduces stock differences and speeds up the preparation process.
+
+## Challenge
+
+The clinic had thousands of patient records. Searching those records from the examination client caused noticeable lag. The fix was a local cache. Each client loads patient data when the application opens, and every create, update, or delete is streamed to the client through a real-time WebSocket update. The client and server stay in sync without re-fetching the full list.
+
+The same WebSocket channel keeps the doctor queue live. New examinations, updates, deletions, and completed visits appear immediately without manual refreshes.
+
+## Stack
+
+Laravel, MySQL, .NET Windows Forms, and Refit.

@@ -1,0 +1,27 @@
+---
+title: "Hadira: Presensi Terintegrasi"
+summary: "Klien presensi mobile dengan geolokasi, check-in QR, dan dasbor orang tua untuk aktivitas sekolah dan PKL."
+thumbnail: "https://iwanhy-bucket.iwanhy.my.id/projects/screenshot-2026-11-09-083448-3819e3e4.webp"
+techStack: ["Flutter", "Riverpod", "l10n"]
+liveUrl: "https://play.google.com/store/apps/details?id=com.bakaranproject.hadira"
+order: 3
+date: "2026-11-09"
+---
+
+## Gambaran Umum
+
+Hadira adalah klien mobile untuk sistem presensi sekolah. Aplikasi terintegrasi dengan sistem presensi sekolah dan PKL, serta mendukung presensi berbasis geolokasi, pemindaian QR code, dan dasbor orang tua untuk memantau aktivitas siswa.
+
+## Cakupan klien
+
+- **Geolokasi dan deteksi lokasi palsu.** Presensi dicek terhadap lokasi yang diharapkan dan ditandai jika perangkat melaporkan posisi palsu.
+- **Dasbor orang tua.** Orang tua dapat memantau aktivitas belajar harian dan perkembangan PKL siswa dari akun yang sama.
+- **Antarmuka dua bahasa.** Copy bahasa Inggris dan Indonesia dikelola melalui lokalisasi agar kedua versi tetap konsisten.
+
+## Tantangan
+
+Masalah utama ada pada layout di Android 13 ke atas, ketika tombol navigasi aplikasi tertumpuk dengan tombol sistem. Perbaikan harus tetap bekerja di berbagai ukuran layar dan mode navigasi, bukan hanya di satu perangkat. Penempatan tombol dan layout disesuaikan agar kontrol aplikasi tidak menutupi area navigasi sistem.
+
+## Catatan
+
+Proyek ini berfokus pada klien mobile. Data presensi dan sistem sekolah tetap berada di backend.

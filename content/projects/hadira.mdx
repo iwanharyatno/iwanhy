@@ -1,0 +1,27 @@
+---
+title: "Hadira: Integrated Attendance"
+summary: "A mobile attendance client with geolocation, QR check-in, and a parent dashboard for school and internship activity."
+thumbnail: "https://iwanhy-bucket.iwanhy.my.id/projects/screenshot-2026-11-09-083448-3819e3e4.webp"
+techStack: ["Flutter", "Riverpod", "l10n"]
+liveUrl: "https://play.google.com/store/apps/details?id=com.bakaranproject.hadira"
+order: 3
+date: "2026-11-09"
+---
+
+## Overview
+
+Hadira is the mobile client for a school attendance system. It integrates with the school attendance and internship (PKL) systems, and supports geolocation-based check-in, QR code scanning, and a parent dashboard that follows student activity.
+
+## What the client handles
+
+- **Geolocation and spoof detection.** Attendance is checked against the expected location and flagged when the device reports a fake position.
+- **Parent dashboard.** Parents can follow daily learning activity and PKL progress from the same account.
+- **Bilingual interface.** English and Indonesian copy are managed through localization so both language versions stay consistent.
+
+## Challenge
+
+The main layout issue appeared on Android 13 and above, where the app navigation controls overlapped the system navigation buttons. The fix needed to work across screen sizes and navigation modes, not just one device. Button placement and layout were adjusted so the app controls stay clear of the system navigation area.
+
+## Notes
+
+The project focused on the mobile client. Attendance data and school systems remain on the backend.

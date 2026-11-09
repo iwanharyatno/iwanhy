@@ -1,0 +1,28 @@
+---
+title: "Intermedia LMS"
+summary: "LMS untuk aktivitas pembelajaran harian organisasi, mencakup pendaftaran, presensi, submit proyek, dan penilaian."
+techStack: ["Laravel", "Filament", "MySQL", "AWS EC2"]
+thumbnail: "https://iwanhy-bucket.iwanhy.my.id/projects/intermedia-lms-7b8396ef.webp"
+order: 5
+date: "2026-11-09"
+---
+
+## Gambaran Umum
+
+Intermedia LMS adalah sistem informasi Learning Management System (LMS) untuk aktivitas pembelajaran harian organisasi. Sistem menyatukan pendaftaran, presensi, submit proyek, dan penilaian dalam satu alur kerja.
+
+## Cakupan sistem
+
+- **Export dan import.** Akun anggota dan data absensi peserta dapat diimpor dan diekspor secara konsisten.
+- **Pendaftaran event sekali klik.** Anggota mendaftar event pembelajaran menggunakan akun yang sudah terdaftar.
+- **Presensi dan penilaian terintegrasi.** Presensi, nilai tugas, dan indikasi lulus atau tidak lulus dikelola dari satu antarmuka.
+
+## Tantangan
+
+Tenggat pengembangan singkat, sehingga antarmuka admin dibangun dengan Filament. Pendekatan dashboard-first ini menjaga fokus pada fungsi, kemudahan penggunaan, dan kecepatan pengembangan tanpa membangun lapisan admin kustom.
+
+Sistem berjalan di AWS EC2 free-tier. Deployment tetap berada dalam batas free-tier tanpa konfigurasi infrastruktur tambahan.
+
+## Stack
+
+Laravel, Filament, MySQL, dan AWS EC2.

@@ -29,7 +29,7 @@ export const projects = defineCollections({
     title:      z.string(),
     summary:    z.string(),
     techStack:  z.array(z.string()),
-    thumbnail:  z.string(),                       // Cloudflare R2 URL
+    thumbnail:  z.string().optional(),            // optional until an image is added
     liveUrl:    z.string().url().optional(),
     repoUrl:    z.string().url().optional(),
     featured:   z.boolean().default(false),       // show on landing page

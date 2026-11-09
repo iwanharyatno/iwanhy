@@ -8,6 +8,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 ## antislop
 For UI, copy, people, mobile layout, or code comments work, read these installed skill files directly (use these paths even if a same-named global skill exists):
 - Core filter, always on: `antislop`: `.opencode/skills/antislop/SKILL.md`
+- Copy & text: `antislop-copywriting`: `.opencode/skills/antislop-copywriting/SKILL.md`
 - UI / visual: `antislop-ui`: `.opencode/skills/antislop-ui/SKILL.md`
 - Mobile / responsive: `antislop-layoutmobile`: `.opencode/skills/antislop-layoutmobile/SKILL.md`
 - Code comments: `antislop-code`: `.opencode/skills/antislop-code/SKILL.md`

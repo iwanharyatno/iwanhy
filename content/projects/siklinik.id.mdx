@@ -1,0 +1,28 @@
+---
+title: "SiKLINIK: Sistem Informasi Pelayanan Kesehatan"
+summary: "Sistem klinik berbasis LAN yang menghubungkan registrasi pasien, rekam medis, stok obat, dan pengambilan resep."
+techStack: ["Laravel", "MySQL", ".NET Windows Forms", "Refit"]
+thumbnail: "https://iwanhy-bucket.iwanhy.my.id/projects/siklinik-0881ed0f.webp"
+order: 4
+date: "2026-11-09"
+---
+
+## Gambaran Umum
+
+SiKLINIK adalah sistem informasi pelayanan kesehatan terintegrasi untuk klinik lokal. Sistem menghubungkan registrasi pasien, rekam medis diagnosis dokter, peracikan obat, dan pengambilan resep melalui jaringan area lokal (LAN).
+
+## Cakupan sistem
+
+- **Arsitektur server terpadu.** Aplikasi desktop C# di meja kasir dan pendaftaran terhubung ke sistem web Laravel melalui satu arsitektur server.
+- **Rekam medis terstruktur.** Riwayat pasien, diagnosis, dan resep tersimpan dalam satu catatan yang konsisten, sehingga staf klinik tidak perlu memasukkan data yang sama berulang kali.
+- **Kontrol stok obat.** Kalkulasi inventaris mengikuti resep yang diproses, sehingga selisih stok berkurang dan proses peracikan lebih cepat.
+
+## Tantangan
+
+Data pasien mencapai ribuan, dan pencarian rutin dari client pemeriksaan menyebabkan lag yang terasa. Solusi yang dipilih adalah local cache. Setiap client memuat data pasien saat aplikasi pertama kali dibuka, lalu setiap operasi create, update, dan delete dialirkan ke client melalui pembaruan WebSocket real-time. Client dan server tetap sinkron tanpa mengambil ulang seluruh daftar.
+
+Kanal WebSocket yang sama menjaga antrean di client dokter tetap live. Pemeriksaan baru, perubahan, penghapusan, dan status selesai langsung tampil tanpa refresh manual.
+
+## Stack
+
+Laravel, MySQL, .NET Windows Forms, dan Refit.

@@ -1,6 +1,7 @@
 import { projectSource } from "@/lib/source";
 import { mdxComponents } from "@/mdx-components";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { getDictionary } from "@/lib/get-dictionary";
@@ -112,12 +113,18 @@ export default async function ProjectPostPage({ params }: Props) {
                 </div>
               ) : null}
             </div>
-            <div className="mt-4">
-              <img
-                src={page.data.thumbnail}
-                alt={page.data.title}
-                className="h-auto w-full" />
-            </div>
+            {page.data.thumbnail ? (
+              <div className="mt-6 overflow-hidden border border-border">
+                <Image
+                  src={page.data.thumbnail}
+                  alt={page.data.title}
+                  width={1200}
+                  height={675}
+                  sizes="(max-width: 768px) 100vw, 896px"
+                  className="h-auto w-full object-cover"
+                />
+              </div>
+            ) : null}
           </header>
 
           <article className="mt-10 max-w-3xl mx-auto">

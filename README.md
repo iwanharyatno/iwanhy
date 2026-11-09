@@ -18,6 +18,28 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
+## Uploading images
+
+Project covers and post images are optimized to WebP and uploaded to Cloudflare R2 with a Bun script. Copy `.env.example` to `.env.local` and fill in the R2 credentials:
+
+```bash
+cp .env.example .env.local
+```
+
+Upload a project image:
+
+```bash
+bun run upload:project ./assets/cover.png --name promokna-online
+```
+
+Upload a post image:
+
+```bash
+bun run upload:post ./assets/diagram.png
+```
+
+The script converts the image to WebP, limits its width to 1600px, and writes it to `projects/` or `posts/`. Hashed filenames are used by default for immutable caching. Use `--no-hash` for a stable filename (add `--force` to overwrite), `--dry-run` to preview without uploading, or `--help` for all options. The public host must be allowed in `next.config.ts` under `images.remotePatterns`.
+
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
 ## Learn More

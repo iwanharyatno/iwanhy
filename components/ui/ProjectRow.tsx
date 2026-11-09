@@ -4,7 +4,7 @@ import Link from "next/link";
 interface ProjectData {
   title: string;
   summary: string;
-  thumbnail: string;
+  thumbnail?: string;
   techStack: string[];
   repoUrl?: string;
   liveUrl?: string;
@@ -39,14 +39,22 @@ export function ProjectRow({
     <article className="grid grid-cols-1 gap-6 border-t border-border py-10 first:border-t-0 first:pt-0 md:grid-cols-12 md:items-center md:gap-10">
       <div className={`md:col-span-6 ${reverse ? "md:order-2" : ""}`}>
         <div className="panel overflow-hidden">
-          <Image
-            src={project.data.thumbnail}
-            alt={project.data.title}
-            width={800}
-            height={450}
-            sizes="(max-width: 768px) 100vw, 50vw"
-            className="h-auto w-full object-cover"
-          />
+          {project.data.thumbnail ? (
+            <Image
+              src={project.data.thumbnail}
+              alt={project.data.title}
+              width={800}
+              height={450}
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="h-auto w-full object-cover"
+            />
+          ) : (
+            <div className="schematic-frame flex aspect-video items-center justify-center bg-surface">
+              <span className="font-mono text-xs uppercase tracking-wider text-muted">
+                Fig. {String(index + 1).padStart(2, "0")}
+              </span>
+            </div>
+          )}
         </div>
       </div>
 
@@ -66,13 +74,15 @@ export function ProjectRow({
 
         <p className="mt-3 text-secondary">{project.data.summary}</p>
 
-        <ul className="mt-4 flex flex-wrap gap-2">
-          {project.data.techStack.slice(0, 6).map((tech) => (
-            <li key={tech} className="badge">
-              {tech}
-            </li>
-          ))}
-        </ul>
+        {project.data.techStack.length > 0 ? (
+          <ul className="mt-4 flex flex-wrap gap-2">
+            {project.data.techStack.slice(0, 6).map((tech) => (
+              <li key={tech} className="badge">
+                {tech}
+              </li>
+            ))}
+          </ul>
+        ) : null}
 
         <div className="mt-6 flex flex-wrap items-center gap-4">
           <Link href={project.url} className="btn-ghost">
