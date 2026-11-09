@@ -18,6 +18,28 @@ export const metadata: Metadata = {
   title: "Iwan Haryatno | Software Engineer",
   description:
     "Portfolio of Iwan Haryatno: server-rendered web apps, backend APIs, and local AI tools, documented in an MDX journal.",
+  manifest: "/site.webmanifest",
+  icons: {
+    icon: [
+      {
+        url: "/favicon-32x32.png",
+        type: "image/png",
+        sizes: "32x32",
+      },
+      {
+        url: "/favicon-16x16.png",
+        type: "image/png",
+        sizes: "16x16",
+      },
+    ],
+    apple: [
+      {
+        url: "/apple-touch-icon.png",
+        type: "image/png",
+        sizes: "180x180",
+      },
+    ],
+  },
 };
 
 export default async function RootLayout({
